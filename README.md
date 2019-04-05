@@ -46,3 +46,4 @@ then add into playground HTTP HEADERS:
 }
  
 
+Our own schma -> validated locally then generated with PRISA for CRUD to db

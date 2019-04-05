@@ -3,7 +3,16 @@ const jwt = require('jsonwebtoken');
 
 // resolvers needed for Query and Mutations subscriptions return
 const resolvers = {
+
   Query: {
+    buildsters: async (parent, args, context, info)  => {
+      items =  await  context.prisma.buildSters()
+      return items
+    },
+    feed: (parent, args, context, info) => {
+      return context.prisma.links();
+    },
+
     hello: () => 'Hello World',
     // destructuring context to get access to user object
     currentUser: (parent, args, {user, prisma}, info) => {
@@ -15,6 +24,18 @@ const resolvers = {
     }
   },
   Mutation: {
+    createBuildSter: async (parent, args, ctx, info)  => {
+      const buildster = await ctx.prisma.createBuildSter({
+        // bio: args.bio,
+        // image: args.image
+        ///or
+        data:{
+          ...args // to spread in args of any length
+        }
+      }, info);
+      console.log(buildster)
+      return buildster;
+    },
     // register resolver signature
     // paci - pronounced as a racial slur - parent, arguments, context, info
     register: async (parent, { username, password }, ctx, info) => {

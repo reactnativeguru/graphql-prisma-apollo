@@ -3,3 +3,30 @@ type User {
   username: String! @unique
   password: String!
 }
+type Link {
+  id: ID!  @id
+  createdAt: DateTime
+  description: String!
+  url: String!
+  postedBy: User @relation(link: INLINE)
+}
+
+type BuildSter {
+  id: ID! @unique @id
+  bio: String!
+  image: String
+  createdAt: DateTime
+  email: String
+  # user: User!
+}
+
+
+# mutation {
+#   createBuildSter( data :{ 
+#     bio:"d",
+#     email: "s"
+#     image:"i"
+#   }) {
+#     id
+#   }
+# }
