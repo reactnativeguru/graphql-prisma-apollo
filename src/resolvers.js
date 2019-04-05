@@ -5,6 +5,14 @@ const jwt = require('jsonwebtoken');
 const resolvers = {
   Query: {
     hello: () => 'Hello World',
+    // destructuring context to get access to user object
+    currentUser: (parent, args, {user, prisma}, info) => {
+      // auth check
+      if(!user){
+        throw new Error("Not authenticated")
+      }
+      return prisma.user({id: user.id})
+    }
   },
   Mutation: {
     // register resolver signature
@@ -48,5 +56,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
-

@@ -31,3 +31,18 @@ mutation {
     }
   }
 }
+
+test authentication:
+with query
+{
+  currentUser {
+    id
+    username
+  }
+}
+then add into playground HTTP HEADERS:
+{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYTc0Y2E1MWVkNzk3MDAwOGU1Mzc3NSIsImlhdCI6MTU1NDQ2ODA2MCwiZXhwIjoxNTU3MDYwMDYwfQ.nMw6-fLfRT_zc9UuYJFFoa-6EKXVWH2-UM3rTj28DHo"
+}
+ 
+
