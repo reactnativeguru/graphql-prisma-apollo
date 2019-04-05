@@ -11,3 +11,23 @@
 5. Start the server using `npm run dev`
 
 (Use npm run start to run without watch mode)
+
+examples mutations
+mutation {
+  register (username: "john", password:"time") {
+    id
+    username
+  }
+}
+
+
+
+mutation {
+  login(username:"john", password: "time"){
+    token 
+    user {
+      id
+      username
+    }
+  }
+}
